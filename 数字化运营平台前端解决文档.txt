@@ -1,0 +1,42 @@
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install
+cnpm install --save babel-polyfill
+cnpm install screenfull
+cnpm install -S file-saver xlsx
+cnpm install -D script-loader
+cnpm install xe-utils vxe-table 
+cnpm install form-making -S
+
+在build\webpack.base.conf.js中 同时注释一下两段代码
+注释代码一
+
+const createLintingRule = () => ({
+  // test: /\.(js|vue)$/,
+  // loader: 'eslint-loader',
+  // enforce: 'pre',
+  // include: [resolve('src'), resolve('test')],
+  // options: {
+  //   formatter: require('eslint-friendly-formatter'),
+  //   emitWarning: !config.dev.showEslintErrorsInOverlay
+  // }
+})
+
+注释代码二
+
+module: {
+  rules: [
+    // ...(config.dev.useEslint ? [createLintingRule()] : []),
+    {
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: vueLoaderConfig
+    },
+	...
+},
+
+
+
+
+
+启动框架
+npm run dev
